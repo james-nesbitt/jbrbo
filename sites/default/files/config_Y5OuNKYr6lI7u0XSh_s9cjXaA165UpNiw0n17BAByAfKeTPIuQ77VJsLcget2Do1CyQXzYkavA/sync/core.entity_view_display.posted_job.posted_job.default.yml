@@ -1,0 +1,45 @@
+uuid: 5747c416-c2d1-410b-93c7-c3c6c4acd89d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.posted_job.posted_job.field_sala
+    - field.field.posted_job.posted_job.field_salary
+  module:
+    - job_posts
+    - user
+id: posted_job.posted_job.default
+targetEntityType: posted_job
+bundle: posted_job
+mode: default
+content:
+  field_sala:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  field_salary:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  name:
+    label: above
+    type: string
+    weight: -4
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  user_id:
+    label: hidden
+    type: author
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

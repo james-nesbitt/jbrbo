@@ -1,0 +1,9 @@
+uuid: 89f1b5f2-6e21-45ca-bfc1-18dc056d0a28
+langcode: en
+status: true
+dependencies: {  }
+id: seeker
+label: Seeker
+weight: 3
+is_admin: null
+permissions: {  }

@@ -1,0 +1,14 @@
+uuid: e202af2a-cdc4-4a94-9001-117a28533c66
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.seeker
+  module:
+    - user
+id: user_add_role_action.seeker
+label: 'Add the Seeker role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: seeker

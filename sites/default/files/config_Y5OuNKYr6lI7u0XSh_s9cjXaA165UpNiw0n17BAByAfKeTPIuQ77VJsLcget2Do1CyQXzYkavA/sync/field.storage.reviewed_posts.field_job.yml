@@ -1,0 +1,20 @@
+uuid: a28e79cf-4666-48ee-b9b0-0f178005a7a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - job_posts
+    - reviewed_posts
+id: reviewed_posts.field_job
+field_name: field_job
+entity_type: reviewed_posts
+type: entity_reference
+settings:
+  target_type: posted_job
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,24 @@
+uuid: 5f83da01-eed3-44a1-9fe1-be153fea8347
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reviewed_posts.field_status
+  module:
+    - reviewed_posts
+id: reviewed_posts.reviewed_posts.field_status
+field_name: field_status
+entity_type: reviewed_posts
+bundle: reviewed_posts
+label: Status
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

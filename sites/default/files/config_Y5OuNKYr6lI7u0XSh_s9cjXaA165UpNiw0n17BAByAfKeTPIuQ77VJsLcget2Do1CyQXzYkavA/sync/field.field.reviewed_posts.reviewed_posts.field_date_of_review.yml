@@ -1,0 +1,21 @@
+uuid: 700b9aa4-c9e3-419e-a744-02e8dd9b43af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reviewed_posts.field_date_of_review
+  module:
+    - datetime
+    - reviewed_posts
+id: reviewed_posts.reviewed_posts.field_date_of_review
+field_name: field_date_of_review
+entity_type: reviewed_posts
+bundle: reviewed_posts
+label: 'Date of Review'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

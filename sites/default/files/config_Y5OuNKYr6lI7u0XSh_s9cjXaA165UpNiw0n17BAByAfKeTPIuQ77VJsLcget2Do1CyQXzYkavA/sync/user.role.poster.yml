@@ -1,0 +1,9 @@
+uuid: 10f44a83-73bb-4812-92e2-04177dcdc8e6
+langcode: en
+status: true
+dependencies: {  }
+id: poster
+label: Poster
+weight: 4
+is_admin: null
+permissions: {  }

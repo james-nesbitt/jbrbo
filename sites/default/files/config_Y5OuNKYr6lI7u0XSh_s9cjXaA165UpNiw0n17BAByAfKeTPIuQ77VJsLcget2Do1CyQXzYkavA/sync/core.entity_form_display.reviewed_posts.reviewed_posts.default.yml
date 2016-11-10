@@ -1,0 +1,24 @@
+uuid: cac05708-6d06-4238-9d8c-19049e31a5af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.reviewed_posts.reviewed_posts.field_date_of_review
+    - field.field.reviewed_posts.reviewed_posts.field_job
+    - field.field.reviewed_posts.reviewed_posts.field_status
+    - field.field.reviewed_posts.reviewed_posts.field_user
+  module:
+    - reviewed_posts
+id: reviewed_posts.reviewed_posts.default
+targetEntityType: reviewed_posts
+bundle: reviewed_posts
+mode: default
+content: {  }
+hidden:
+  field_date_of_review: true
+  field_job: true
+  field_status: true
+  field_user: true
+  langcode: true
+  name: true
+  user_id: true

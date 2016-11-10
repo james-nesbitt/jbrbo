@@ -1,0 +1,26 @@
+uuid: 3ecdf433-bb61-4d2c-ab1d-3c17888e60e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reviewed_posts.field_job
+  module:
+    - reviewed_posts
+id: reviewed_posts.reviewed_posts.field_job
+field_name: field_job
+entity_type: reviewed_posts
+bundle: reviewed_posts
+label: Job
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:posted_job'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

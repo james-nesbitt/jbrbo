@@ -1,0 +1,20 @@
+uuid: cc588b74-bee6-48d1-aa74-1c6b79f6b946
+langcode: en
+status: true
+dependencies:
+  module:
+    - reviewed_posts
+    - user
+id: reviewed_posts.field_user
+field_name: field_user
+entity_type: reviewed_posts
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

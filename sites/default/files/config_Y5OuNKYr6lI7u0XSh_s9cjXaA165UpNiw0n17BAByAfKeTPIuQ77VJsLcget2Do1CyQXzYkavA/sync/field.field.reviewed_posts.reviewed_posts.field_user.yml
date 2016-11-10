@@ -1,0 +1,29 @@
+uuid: 2e963428-502d-4c4a-9554-b03d146b0d36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.reviewed_posts.field_user
+  module:
+    - reviewed_posts
+id: reviewed_posts.reviewed_posts.field_user
+field_name: field_user
+entity_type: reviewed_posts
+bundle: reviewed_posts
+label: user
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

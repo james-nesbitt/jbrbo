@@ -1,0 +1,14 @@
+uuid: f1a41f80-a82a-4690-938b-5174040de863
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.poster
+  module:
+    - user
+id: user_remove_role_action.poster
+label: 'Remove the Poster role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: poster

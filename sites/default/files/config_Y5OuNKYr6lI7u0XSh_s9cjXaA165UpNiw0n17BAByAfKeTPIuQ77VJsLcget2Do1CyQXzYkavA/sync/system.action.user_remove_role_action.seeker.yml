@@ -1,0 +1,14 @@
+uuid: e8848c3a-1e71-4dc0-898d-05af1536b08b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.seeker
+  module:
+    - user
+id: user_remove_role_action.seeker
+label: 'Remove the Seeker role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: seeker

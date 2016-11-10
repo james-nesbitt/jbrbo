@@ -1,0 +1,24 @@
+uuid: 034c9a72-0606-4e24-8430-49967e9ee6f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.posted_job.field_sala
+  module:
+    - job_posts
+id: posted_job.posted_job.field_sala
+field_name: field_sala
+entity_type: posted_job
+bundle: posted_job
+label: Salary
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

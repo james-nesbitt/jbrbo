@@ -1,0 +1,10 @@
+uuid: 44557c8b-2c30-44cd-b93d-8123a158e6b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - reviewed_posts
+id: reviewed_posts.review
+label: review
+targetEntityType: reviewed_posts
+cache: true

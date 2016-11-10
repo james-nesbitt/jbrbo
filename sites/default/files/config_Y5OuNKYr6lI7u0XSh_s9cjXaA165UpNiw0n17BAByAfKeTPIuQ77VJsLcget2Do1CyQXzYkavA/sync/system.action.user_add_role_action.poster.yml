@@ -1,0 +1,14 @@
+uuid: 9b958519-c1ae-490c-8a97-d11a519790fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.poster
+  module:
+    - user
+id: user_add_role_action.poster
+label: 'Add the Poster role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: poster

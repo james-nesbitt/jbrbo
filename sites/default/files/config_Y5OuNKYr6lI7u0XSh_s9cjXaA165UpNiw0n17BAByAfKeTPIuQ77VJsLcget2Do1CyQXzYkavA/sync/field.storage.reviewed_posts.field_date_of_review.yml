@@ -1,0 +1,20 @@
+uuid: 050a5531-797c-464b-8099-b85629f195f0
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - reviewed_posts
+id: reviewed_posts.field_date_of_review
+field_name: field_date_of_review
+entity_type: reviewed_posts
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

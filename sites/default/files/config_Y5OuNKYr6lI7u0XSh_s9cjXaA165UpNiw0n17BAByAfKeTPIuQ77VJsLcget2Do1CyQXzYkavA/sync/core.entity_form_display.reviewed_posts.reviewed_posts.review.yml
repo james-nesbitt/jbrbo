@@ -1,0 +1,66 @@
+uuid: 0d898681-a044-46bb-b6df-e203aa9147e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.reviewed_posts.review
+    - field.field.reviewed_posts.reviewed_posts.field_date_of_review
+    - field.field.reviewed_posts.reviewed_posts.field_job
+    - field.field.reviewed_posts.reviewed_posts.field_status
+    - field.field.reviewed_posts.reviewed_posts.field_user
+  module:
+    - datetime
+    - reviewed_posts
+id: reviewed_posts.reviewed_posts.review
+targetEntityType: reviewed_posts
+bundle: reviewed_posts
+mode: review
+content:
+  field_date_of_review:
+    weight: 13
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_job:
+    weight: 14
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_status:
+    weight: 16
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  field_user:
+    weight: 15
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  langcode:
+    type: language_select
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

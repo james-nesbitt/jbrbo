@@ -1,0 +1,47 @@
+uuid: 20dd2ee7-9f64-462f-8eb5-0d0eb35edec2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.posted_job.posted_job.field_sala
+    - field.field.posted_job.posted_job.field_salary
+  module:
+    - job_posts
+id: posted_job.posted_job.default
+targetEntityType: posted_job
+bundle: posted_job
+mode: default
+content:
+  field_sala:
+    weight: 11
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  field_salary:
+    weight: 12
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  langcode:
+    type: language_select
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,20 @@
+uuid: 95a4971f-5d1a-4b8f-9880-82a1a3a4c0ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - reviewed_posts
+id: reviewed_posts.field_status
+field_name: field_status
+entity_type: reviewed_posts
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

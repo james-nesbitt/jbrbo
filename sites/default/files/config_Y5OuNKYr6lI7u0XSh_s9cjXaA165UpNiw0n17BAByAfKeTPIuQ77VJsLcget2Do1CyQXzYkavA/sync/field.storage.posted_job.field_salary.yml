@@ -1,0 +1,20 @@
+uuid: 0184f11e-fe8c-40da-a332-6014a541ab2d
+langcode: en
+status: true
+dependencies:
+  module:
+    - job_posts
+id: posted_job.field_salary
+field_name: field_salary
+entity_type: posted_job
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
