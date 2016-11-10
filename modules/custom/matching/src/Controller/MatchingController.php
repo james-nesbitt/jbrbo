@@ -3,15 +3,12 @@
 namespace Drupal\matching\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Entity\EntityFormBuilderInterface;
 use Drupal\Core\Entity\EntityViewBuilderInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\job_posts\PostedJobInterface;
+use Drupal\matching\Form\UserJobReviewForm;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\matching\MatchingService;
-use Drupal\Core\Entity\EntityFormBuilder;
-use Drupal\Core\Entity\EntityTypeManager;
-use Drupal\Core\Session\AccountProxy;
 
 
 /**
@@ -31,7 +28,7 @@ class MatchingController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(MatchingService $matching_service,) {
+  public function __construct(MatchingService $matching_service) {
     $this->matching_service = $matching_service;
   }
 
@@ -79,14 +76,13 @@ class MatchingController extends ControllerBase {
     /** @var array $myOneJob */
     $myOneJob = $viewBuilder->view($job);
 
-    $preparedViewedPost = $this->matching_service->getReviewedPost($job, $user);
-
     // Return job and form
-    $reviewForm = $this->formBuilder()->getForm('Drupal\matching\Form\UserJobReviewForm', $job, $user);
+    $reviewFormObject = new UserJobReviewForm($this->matching_service, $this->entityTypeManager());
+    $reviewFormObject->Initialize();
+    $reviewForm = $this->formBuilder()->getForm($reviewFormObject);
 
     return [
       'job' => $myOneJob,
-//      'reviewed' => $reviewedPost,
       'form' => $reviewForm
     ];
 

@@ -2,8 +2,12 @@
 
 namespace Drupal\matching\Form;
 
+use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\job_posts\PostedJobInterface;
+use Drupal\reviewed_posts\ReviewedPostsInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\matching\MatchingService;
 use Drupal\Core\Entity\EntityTypeManager;
@@ -23,30 +27,37 @@ class UserJobReviewForm extends FormBase {
   protected $matching_service;
 
   /**
-   * Drupal\Core\Entity\EntityTypeManager definition.
+   * Job for which this review is taking place
    *
-   * @var \Drupal\Core\Entity\EntityTypeManager
+   * @protected Drupal\job_posts\PostedJobInterface $job
    */
-  protected $entity_type_manager;
+  protected $job;
+
+  /**
+   * User account for which this review is taking place
+   *
+   * @protected Drupal\Core\Session\AccountInterface $account
+   */
+  protected $account;
 
   /**
    * Constructor
    */
   public function __construct(
-    MatchingService $matching_service,
-    EntityTypeManager $entity_type_manager
+    MatchingService $matching_service
   ) {
     $this->matching_service = $matching_service;
-    $this->entity_type_manager = $entity_type_manager;
   }
 
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('matching.service'),
-      $container->get('entity_type.manager')
+      $container->get('matching.service')
     );
   }
 
+  public function Initialize(PostedJobInterface $job, AccountInterface $account) {
+
+  }
 
   /**
    * {@inheritdoc}
@@ -58,22 +69,23 @@ class UserJobReviewForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, PostedJobInterface $job, AccountInterface $account) {
-
+  public function buildForm(array $form, FormStateInterface $form_state) {
     /**
      * Put job and account into the form as values
      * (these are never sent to the client)
      */
-    $form['job'] => [
+    $form['job'] = [
       '#type' => 'value',
-      '#value' => $job
+      '#value' => $this->job
     ];
-    $form['account'] => [
+    $form['account'] = [
       '#type' => 'value',
-      '#value' => $account
+      '#value' => $this->account
     ];
 
-
+    /**
+     *  Action buttons
+     */
     $form['applay'] = array(
       '#type' => 'submit',
       '#value' => $this->t('Approve'),
@@ -95,11 +107,11 @@ class UserJobReviewForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
 
-    $job = $form_state->get('job')
-    $account = $form_state->get('account')
+    $job = $form_state->get('job');
+    $account = $form_state->get('account');
 
     /** @var EntityStorageInterface $jobReviewStorage */
-    $jobReviewStorage = $this->entityTypeManager()->getStorage('reviewed_posts')''
+    $jobReviewStorage = $this->entityTypeManager()->getStorage('reviewed_posts');
 
     /** @var array $jobReviewMatches */
     $jobReviewMatches = $jobReviewStorage->getQuery()
@@ -108,7 +120,7 @@ class UserJobReviewForm extends FormBase {
       ->range(0,1)
       ->execute();
 
-    /** @var EntityInterface $jobReview */
+    /** @var ReviewedPostsInterface $jobReview */
 
     if (count($jobReviewMatches) > 0) {
       $jobReview = $jobReviewStorage->load(reset($jobReviewStorage));
@@ -123,13 +135,13 @@ class UserJobReviewForm extends FormBase {
     /** @var array $trigger */
     $trigger = $form_state->getTriggeringElement();
     if (isset($trigger['#state'])) {
-      /** @var FieldItemListInterface $jobReviewState */
-      $jobReviewState = $jobReview->get('field_state');
-
       /**
-       * @TODO Update the value
+       * Update the state field from the form value
        */
 
+      /** @var FieldItemListInterface $jobReviewState */
+      $jobReviewState = $jobReview->get('field_state');
+      $jobReviewState->set(0, $trigger['#state']);
       $jobReview->set('field_state', $jobReviewState);
 
       if ($jobReview->save()) {
