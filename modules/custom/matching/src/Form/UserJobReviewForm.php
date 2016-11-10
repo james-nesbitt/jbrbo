@@ -56,7 +56,8 @@ class UserJobReviewForm extends FormBase {
   }
 
   public function Initialize(PostedJobInterface $job, AccountInterface $account) {
-
+    $this->job = $job;
+    $this->account = $account;
   }
 
   /**
