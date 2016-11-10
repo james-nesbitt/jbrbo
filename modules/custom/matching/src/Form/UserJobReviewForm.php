@@ -107,31 +107,11 @@ class UserJobReviewForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-
     $job = $form_state->get('job');
     $account = $form_state->get('account');
 
-    /** @var EntityStorageInterface $jobReviewStorage */
-    $jobReviewStorage = $this->entityTypeManager()->getStorage('reviewed_posts');
-
-    /** @var array $jobReviewMatches */
-    $jobReviewMatches = $jobReviewStorage->getQuery()
-      ->condition('field_job', $job)
-      ->condition('field_user', $account)
-      ->range(0,1)
-      ->execute();
-
     /** @var ReviewedPostsInterface $jobReview */
-
-    if (count($jobReviewMatches) > 0) {
-      $jobReview = $jobReviewStorage->load(reset($jobReviewStorage));
-    }
-    else {
-      $jobReview = $jobReviewStorage->create([
-        'field_job' => $job,
-        'field_user' => $account
-      ]);
-    }
+   $jobReview = $this->matching_service->getReviewedPost($job, $account);
 
     /** @var array $trigger */
     $trigger = $form_state->getTriggeringElement();
