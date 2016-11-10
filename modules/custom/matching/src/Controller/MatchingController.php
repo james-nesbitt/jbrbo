@@ -29,33 +29,10 @@ class MatchingController extends ControllerBase {
   protected $matching_service;
 
   /**
-   * Drupal\Core\Entity\EntityFormBuilder definition.
-   *
-   * @var \Drupal\Core\Entity\EntityFormBuilder
-   */
-  protected $entity_form_builder;
-
-  /**
-   * Drupal\Core\Entity\EntityTypeManager definition.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManager
-   */
-  protected $entity_type_manager;
-
-  /**
-   * Drupal\Core\Session\AccountProxy definition.
-   *
-   * @var \Drupal\Core\Session\AccountProxy
-   */
-  protected $current_user;
-  /**
    * {@inheritdoc}
    */
-  public function __construct(MatchingService $matching_service, EntityFormBuilder $entity_form_builder, EntityTypeManager $entity_type_manager, AccountProxy $current_user) {
+  public function __construct(MatchingService $matching_service,) {
     $this->matching_service = $matching_service;
-    $this->entity_form_builder = $entity_form_builder;
-    $this->entity_type_manager = $entity_type_manager;
-    $this->current_user = $current_user;
   }
 
   /**
@@ -63,10 +40,7 @@ class MatchingController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('matching.service'),
-      $container->get('entity.form_builder'),
-      $container->get('entity_type.manager'),
-      $container->get('current_user')
+      $container->get('matching.service')
     );
   }
 
@@ -99,31 +73,16 @@ class MatchingController extends ControllerBase {
     /** @var PostedJobInterface $job */
     $job = $this->matching_service->getOneJob($user);
 
-    /** @var EntityViewBuilderInterface $viewBuilder
-     *        view builder for PostedJob entities */
+    /** @var EntityViewBuilderInterface $viewBuilder */
     $viewBuilder = $this->entityTypeManager()->getViewBuilder('posted_job');
 
-    /**
-     * @var array $myOneJob
-     */
-     $myOneJob = $viewBuilder->view($job);
-
+    /** @var array $myOneJob */
+    $myOneJob = $viewBuilder->view($job);
 
     $preparedViewedPost = $this->matching_service->getReviewedPost($job, $user);
 
-    /** @var EntityFormBuilderInterface $formBuilder */
-    $formBuilder = $this->entityFormBuilder();
-    $reviewForm = $formBuilder->getForm($preparedViewedPost, 'review');
-
-//$reviewedPost = $viewBuilder->view($preparedViewedPost);
-
-    //$reviewForm = $this->entityFormBuilder()->getForm('Drupal\matching\Form\UserJobReviewForm');
-
-   // $reviewForm = $this->formBuilder()->getForm('Drupal\matching\Form\UserJobReviewForm');
-    //$reviewForm = [ '#type' => 'markup', '#markup' => 'form goes here'];
-
     // Return job and form
-  //  $reviewForm = $this->formBuilder()->getForm('Drupal\matching\Form\UserJobReviewForm');
+    $reviewForm = $this->formBuilder()->getForm('Drupal\matching\Form\UserJobReviewForm', $job, $user);
 
     return [
       'job' => $myOneJob,
