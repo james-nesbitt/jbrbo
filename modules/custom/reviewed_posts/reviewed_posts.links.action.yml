@@ -1,0 +1,5 @@
+entity.reviewed_posts.add_form:
+  route_name: entity.reviewed_posts.add_form
+  title: 'Add Reviewed posts'
+  appears_on:
+    - entity.reviewed_posts.collection

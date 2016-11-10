@@ -1,0 +1,19 @@
+add reviewed posts entities:
+  title: 'Create new Reviewed posts entities'
+
+administer reviewed posts entities:
+  title: 'Administer Reviewed posts entities'
+  description: 'Allow to access the administration form to configure Reviewed posts entities.'
+  restrict access: true
+
+delete reviewed posts entities:
+  title: 'Delete Reviewed posts entities'
+
+edit reviewed posts entities:
+  title: 'Edit Reviewed posts entities'
+
+view published reviewed posts entities:
+  title: 'View published Reviewed posts entities'
+
+view unpublished reviewed posts entities:
+  title: 'View unpublished Reviewed posts entities'

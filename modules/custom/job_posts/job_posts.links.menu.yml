@@ -1,0 +1,13 @@
+# Posted job menu items definition
+entity.posted_job.collection:
+  title: 'Posted job list'
+  route_name: entity.posted_job.collection
+  description: 'List Posted job entities'
+  parent: system.admin_structure
+  weight: 100
+
+posted_job.admin.structure.settings:
+  title: Posted job settings
+  description: 'Configure Posted job entities'
+  route_name: posted_job.settings
+  parent: system.admin_structure

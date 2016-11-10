@@ -1,0 +1,14 @@
+{
+  "name": "drupal/reviewed_posts",
+  "type": "drupal-module",
+  "description": "Reviewed posts",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/reviewed_posts",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/reviewed_posts",
+    "source": "http://cgit.drupalcode.org/reviewed_posts"
+  },
+  "require": { }
+}

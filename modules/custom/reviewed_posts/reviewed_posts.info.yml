@@ -1,0 +1,5 @@
+name: reviewed_posts
+type: module
+description: Reviewed posts
+core: 8.x
+package: job

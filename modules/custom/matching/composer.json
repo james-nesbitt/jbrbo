@@ -1,0 +1,14 @@
+{
+  "name": "drupal/matching",
+  "type": "drupal-module",
+  "description": "Matching Module",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/matching",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/matching",
+    "source": "http://cgit.drupalcode.org/matching"
+  },
+  "require": { }
+}

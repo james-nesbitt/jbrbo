@@ -1,0 +1,13 @@
+# Reviewed posts menu items definition
+entity.reviewed_posts.collection:
+  title: 'Reviewed posts list'
+  route_name: entity.reviewed_posts.collection
+  description: 'List Reviewed posts entities'
+  parent: system.admin_structure
+  weight: 100
+
+reviewed_posts.admin.structure.settings:
+  title: Reviewed posts settings
+  description: 'Configure Reviewed posts entities'
+  route_name: reviewed_posts.settings
+  parent: system.admin_structure

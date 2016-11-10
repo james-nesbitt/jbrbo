@@ -1,0 +1,21 @@
+# Reviewed posts routing definition
+reviewed_posts.settings_tab:
+  route_name: reviewed_posts.settings
+  title: 'Settings'
+  base_route: reviewed_posts.settings
+entity.reviewed_posts.canonical:
+  route_name: entity.reviewed_posts.canonical
+  base_route: entity.reviewed_posts.canonical
+  title: 'View'
+
+entity.reviewed_posts.edit_form:
+  route_name: entity.reviewed_posts.edit_form
+  base_route: entity.reviewed_posts.canonical
+  title: Edit
+
+entity.reviewed_posts.delete_form:
+  route_name:  entity.reviewed_posts.delete_form
+  base_route:  entity.reviewed_posts.canonical
+  title: Delete
+  weight: 10
+

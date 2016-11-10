@@ -1,0 +1,21 @@
+# Posted job routing definition
+posted_job.settings_tab:
+  route_name: posted_job.settings
+  title: 'Settings'
+  base_route: posted_job.settings
+entity.posted_job.canonical:
+  route_name: entity.posted_job.canonical
+  base_route: entity.posted_job.canonical
+  title: 'View'
+
+entity.posted_job.edit_form:
+  route_name: entity.posted_job.edit_form
+  base_route: entity.posted_job.canonical
+  title: Edit
+
+entity.posted_job.delete_form:
+  route_name:  entity.posted_job.delete_form
+  base_route:  entity.posted_job.canonical
+  title: Delete
+  weight: 10
+

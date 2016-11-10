@@ -1,0 +1,19 @@
+add posted job entities:
+  title: 'Create new Posted job entities'
+
+administer posted job entities:
+  title: 'Administer Posted job entities'
+  description: 'Allow to access the administration form to configure Posted job entities.'
+  restrict access: true
+
+delete posted job entities:
+  title: 'Delete Posted job entities'
+
+edit posted job entities:
+  title: 'Edit Posted job entities'
+
+view published posted job entities:
+  title: 'View published Posted job entities'
+
+view unpublished posted job entities:
+  title: 'View unpublished Posted job entities'

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file posted_job.html.twig
+ * Default theme implementation to present Posted job data.
+ *
+ * This template is used when viewing Posted job pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_posted_job()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('posted_job') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

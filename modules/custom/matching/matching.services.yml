@@ -1,0 +1,5 @@
+services:
+  matching.service:
+    class: Drupal\matching\MatchingService
+    arguments: ["@entity_type.manager", "@entity.form_builder", "@current_user"]
+

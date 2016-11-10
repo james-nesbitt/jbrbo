@@ -1,0 +1,5 @@
+name: Job Posts
+type: module
+description: Job Post module
+core: 8.x
+package: job

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/job_posts",
+  "type": "drupal-module",
+  "description": "Job Post module",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/job_posts",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/job_posts",
+    "source": "http://cgit.drupalcode.org/job_posts"
+  },
+  "require": { }
+}
