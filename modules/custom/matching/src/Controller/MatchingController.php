@@ -61,10 +61,7 @@ class MatchingController extends ControllerBase {
    */
   public function myJobs() {
 
-    /**
-     * @var AccountInterface $user
-     *    The current user
-     */
+    /** @var AccountInterface $user */
     $user = $this->currentUser();
 
     /** @var PostedJobInterface $job */
@@ -77,9 +74,7 @@ class MatchingController extends ControllerBase {
     $myOneJob = $viewBuilder->view($job);
 
     // Return job and form
-    $reviewFormObject = new UserJobReviewForm($this->matching_service, $this->entityTypeManager());
-    $reviewFormObject->Initialize();
-    $reviewForm = $this->formBuilder()->getForm($reviewFormObject);
+    $reviewForm = $this->formBuilder()->buildForm('Drupal\matching\Form\UserJobReviewForm', $job, $user);
 
     return [
       'job' => $myOneJob,

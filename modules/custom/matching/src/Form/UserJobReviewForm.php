@@ -27,21 +27,9 @@ class UserJobReviewForm extends FormBase {
   protected $matching_service;
 
   /**
-   * Job for which this review is taking place
-   *
-   * @protected Drupal\job_posts\PostedJobInterface $job
-   */
-  protected $job;
-
-  /**
-   * User account for which this review is taking place
-   *
-   * @protected Drupal\Core\Session\AccountInterface $account
-   */
-  protected $account;
-
-  /**
    * Constructor
+   *
+   * @param MatchingService $matching_service
    */
   public function __construct(
     MatchingService $matching_service
@@ -49,15 +37,14 @@ class UserJobReviewForm extends FormBase {
     $this->matching_service = $matching_service;
   }
 
+  /**
+   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   * @return static
+   */
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('matching.service')
     );
-  }
-
-  public function Initialize(PostedJobInterface $job, AccountInterface $account) {
-    $this->job = $job;
-    $this->account = $account;
   }
 
   /**
@@ -72,16 +59,26 @@ class UserJobReviewForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     /**
+     * @var array $buildArgs
+     *     arguments passed into the form builder;
+     */
+    $buildArgs = $form_state->getBuildInfo();
+
+    /**
+     * @TODO check to make sure that we received proper context
+     */
+
+    /**
      * Put job and account into the form as values
      * (these are never sent to the client)
      */
     $form['job'] = [
       '#type' => 'value',
-      '#value' => $this->job
+      '#value' => $buildArgs['job']
     ];
     $form['account'] = [
       '#type' => 'value',
-      '#value' => $this->account
+      '#value' => $buildArgs['account']
     ];
 
     /**
