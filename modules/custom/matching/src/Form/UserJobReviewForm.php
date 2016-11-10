@@ -5,12 +5,9 @@ namespace Drupal\matching\Form;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\job_posts\PostedJobInterface;
 use Drupal\reviewed_posts\ReviewedPostsInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\matching\MatchingService;
-use Drupal\Core\Entity\EntityTypeManager;
 
 /**
  * Class UserJobReviewForm.
@@ -121,6 +118,12 @@ class UserJobReviewForm extends FormBase {
       $jobReviewState = $jobReview->get('field_state');
       $jobReviewState->set(0, $trigger['#state']);
       $jobReview->set('field_state', $jobReviewState);
+
+      /**
+       * Technically, the above lines can be converted into a 1-line
+       *
+       * $jobReview->set('field_state', $jobReview->get('field_state')->set(0, $trigger['#state']));
+       */
 
       if ($jobReview->save()) {
         drupal_set_message('Saved job review');

@@ -70,15 +70,9 @@ class MatchingController extends ControllerBase {
     /** @var EntityViewBuilderInterface $viewBuilder */
     $viewBuilder = $this->entityTypeManager()->getViewBuilder('posted_job');
 
-    /** @var array $myOneJob */
-    $myOneJob = $viewBuilder->view($job);
-
-    // Return job and form
-    $reviewForm = $this->formBuilder()->buildForm('Drupal\matching\Form\UserJobReviewForm', $job, $user);
-
     return [
-      'job' => $myOneJob,
-      'form' => $reviewForm
+      'job' => $viewBuilder->view($job),
+      'form' => $this->formBuilder()->buildForm('Drupal\matching\Form\UserJobReviewForm', $job, $user)
     ];
 
   }

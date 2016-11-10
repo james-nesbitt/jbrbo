@@ -3,8 +3,6 @@
 namespace Drupal\matching;
 
 use Drupal\Core\Entity\EntityTypeManager;
-use Drupal\Core\Entity\EntityFormBuilder;
-use Drupal\Core\Session\AccountInterfa;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\job_posts\PostedJobInterface;
 use Drupal\reviewed_posts\ReviewedPostsInterface;
@@ -25,6 +23,8 @@ class MatchingService implements MatchingServiceInterface {
 
   /**
    * Constructor.
+   *
+   * @param EntityTypeManager $entity_type_manager
    */
   public function __construct(EntityTypeManager $entity_type_manager) {
     $this->entity_type_manager = $entity_type_manager;
@@ -63,6 +63,9 @@ class MatchingService implements MatchingServiceInterface {
     $query->range(0,1);
 
     $ids = $query->execute();
+
+    /** @var ReviewedPostsInterface $reviewedPost */
+
     if (count($ids)>0) {
       $reviewedPost = $storage->load(reset($ids));
     }
@@ -74,7 +77,6 @@ class MatchingService implements MatchingServiceInterface {
     }
 
     return $reviewedPost;
-
   }
 
 }
