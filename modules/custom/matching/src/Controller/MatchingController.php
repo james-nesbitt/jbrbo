@@ -55,7 +55,7 @@ class MatchingController extends ControllerBase {
       '#markup' => $this->t('Implement method: findCandidates')
     ];
   }
-  
+
   /**
    * Myjobs.
    *

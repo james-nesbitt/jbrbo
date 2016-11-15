@@ -1,16 +1,16 @@
 # jbrbo
 
-## Step1 - Create some data
+## 1. Create some data
 
 ### Job posts
 /admin/structure/posted_job/add
 
 ### Users
 
-## Review Posts
+## 2. Review Posts
 /myjobs
 
 Press **Accept** or **Reject**, but not Save
 
-## See Reviewed Posts archive
+## 3. See Reviewed Posts archive
 /admin/structure/reviewed_posts
