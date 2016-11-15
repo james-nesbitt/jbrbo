@@ -2,6 +2,8 @@
 
 namespace Drupal\matching\Form;
 
+use Drupal\Core\Datetime\Element\DateElementBase;
+use Drupal\Core\Datetime\Element\Datetime;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -59,7 +61,9 @@ class UserJobReviewForm extends FormBase {
      * @var array $buildArgs
      *     arguments passed into the form builder;
      */
-    $buildArgs = $form_state->getBuildInfo();
+
+   // $buildArgs = $form_state->getBuildInfo();
+
 
     /**
      * @TODO check to make sure that we received proper context
@@ -69,32 +73,32 @@ class UserJobReviewForm extends FormBase {
      * Put job and account into the form as values
      * (these are never sent to the client)
      */
-    $form['job'] = [
-      '#type' => 'value',
-      '#value' => $buildArgs['job']
-    ];
-    $form['account'] = [
-      '#type' => 'value',
-      '#value' => $buildArgs['account']
-    ];
 
-    /**
-     *  Action buttons
-     */
-    $form['applay'] = array(
-      '#type' => 'submit',
-      '#value' => $this->t('Approve'),
-      '#description' => $this->t('Apllay for Job'),
-      '#state' => 1
-    );
-    $form['reject'] = array(
-      '#type' => 'submit',
-      '#value' => $this->t('Reject'),
-      '#description' => $this->t('Reject Job Offer'),
-      '#state' => 0
-    );
+//
+//    $form['job'] = [
+//      '#type' => 'value',
+//      '#value' => $buildArgs['job']
+//    ];
+//
+//    $form['account'] = [
+//      '#type' => 'value',
+//      '#value' => $buildArgs['account']
+//    ];
 
-    return $form;
+
+//      $form['field_date_of_review'] = [
+//          '#type' => 'value',
+//          '#value' => '13/12/2016'
+//      ];
+//
+//
+//      $form['status'] = [
+//          '#type' => 'value',
+//          '#value' => '13/12/2016'
+//      ];
+
+
+   // return $form;
   }
 
   /**

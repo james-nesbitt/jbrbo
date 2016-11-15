@@ -4,7 +4,9 @@ namespace Drupal\matching\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityViewBuilderInterface;
+use Drupal\Core\Form\FormState;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Entity\EntityFormBuilderInterface;
 use Drupal\job_posts\PostedJobInterface;
 use Drupal\matching\Form\UserJobReviewForm;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -53,11 +55,11 @@ class MatchingController extends ControllerBase {
       '#markup' => $this->t('Implement method: findCandidates')
     ];
   }
+  
   /**
    * Myjobs.
    *
-   * @return string
-   *   Return Hello string.
+
    */
   public function myJobs() {
 
@@ -67,13 +69,36 @@ class MatchingController extends ControllerBase {
     /** @var PostedJobInterface $job */
     $job = $this->matching_service->getOneJob($user);
 
+
     /** @var EntityViewBuilderInterface $viewBuilder */
     $viewBuilder = $this->entityTypeManager()->getViewBuilder('posted_job');
 
-    return [
-      'job' => $viewBuilder->view($job),
-      'form' => $this->formBuilder()->buildForm('Drupal\matching\Form\UserJobReviewForm', $job, $user)
-    ];
+
+    if (!empty($job)) {
+      // if there is any job post, then show it...
+      $preparedViewedPost = $this->matching_service->getReviewedPost($job, $user);
+
+      /** @var EntityFormBuilderInterface $formBuilder */
+      $formBuilder = $this->entityFormBuilder();
+
+      /** @var array $reviewForm */
+      $reviewForm = $formBuilder->getForm($preparedViewedPost, 'review');
+      return [
+        'job' => $viewBuilder->view($job),
+        //'form' => $this->formBuilder()->buildForm('Drupal\matching\Form\UserJobReviewForm');
+        'form' => $reviewForm
+      ];
+    }
+
+    else {
+      // If there are no more jobs to offer, say something
+      return [
+        '#type' => 'markup',
+        '#markup' => $this->t("All posts reviewed or not created. Nothing to see...<br />(SadFace)")
+      ];
+
+    }
+
 
   }
 

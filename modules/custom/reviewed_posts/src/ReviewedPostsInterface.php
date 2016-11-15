@@ -12,6 +12,9 @@ use Drupal\user\EntityOwnerInterface;
  * @ingroup reviewed_posts
  */
 interface ReviewedPostsInterface extends ContentEntityInterface, EntityChangedInterface, EntityOwnerInterface {
+    const REJECTED = 1;
+    const ACCEPTED = 2;
+
   // Add get/set methods for your configuration properties here.
   /**
    * Gets the Reviewed posts name.

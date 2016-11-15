@@ -9,6 +9,7 @@ use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\reviewed_posts\ReviewedPostsInterface;
 use Drupal\user\UserInterface;
+use Drupal\Core\Datetime\DateFormatInterface;
 
 /**
  * Defines the Reviewed posts entity.
@@ -29,6 +30,7 @@ use Drupal\user\UserInterface;
  *       "add" = "Drupal\reviewed_posts\Form\ReviewedPostsForm",
  *       "edit" = "Drupal\reviewed_posts\Form\ReviewedPostsForm",
  *       "delete" = "Drupal\reviewed_posts\Form\ReviewedPostsDeleteForm",
+ *       "do" = "Drupal\reviewed_posts\Form\ReviewedPostsDeleteForm",
  *     },
  *     "access" = "Drupal\reviewed_posts\ReviewedPostsAccessControlHandler",
  *     "route_provider" = {

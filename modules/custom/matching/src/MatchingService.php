@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\job_posts\PostedJobInterface;
 use Drupal\reviewed_posts\ReviewedPostsInterface;
+use Drupal\Core\Database\Query;
 
 /**
  * Class MatchingService.
@@ -36,11 +37,70 @@ class MatchingService implements MatchingServiceInterface {
    */
   public function getOneJob(AccountInterface $user) {
 
+    /** @var \Drupal\Core\Entity\EntityStorageInterface $storagePostedJobs */
+
+
     /** @var \Drupal\Core\Entity\EntityStorageInterface $storage */
-    $storage = $this->entity_type_manager->getStorage('posted_job');
+//      $storage = $this->entity_type_manager->getStorage('reviewed_posts');
+//
+//
+//      $query = $storage->getQuery();
+//      $query->condition('field_user', $user->id(), '<>');
+//      $query->condition('field_status', 0,'>');
+//      //$query->range(0,1);
+//      $ids = $query->execute();
 
 
-    $job = $storage->load(1);
+    $db = \Drupal::database();
+
+    /** @var \Drupal\Core\Database\Connection $sql_query
+     *         query for getting users reviewed posts
+     */
+
+    $sql_query =  "select posted_job.id as jobs from posted_job 
+    inner join reviewed_posts__field_job on posted_job.id = reviewed_posts__field_job.field_job_target_id 
+    inner join reviewed_posts on reviewed_posts.id = reviewed_posts__field_job.entity_id 
+    inner join reviewed_posts__field_user on reviewed_posts.id = reviewed_posts__field_user.entity_id 
+    where reviewed_posts__field_user.field_user_target_id = " . $user->id() . " group by posted_job.id;";
+
+
+    /** @var \Drupal\Core\Database\Connection $dbValues */
+    $dbValues = $db->query($sql_query)->fetchAllAssoc('jobs');
+
+
+    /**
+     * @var array $reviewed_ids
+     *      Contains all jobs user reviewed
+     */
+
+    foreach ($dbValues as $key => $jobs) {
+      foreach ($jobs as $values) {
+        $reviewed_ids[] = $values['jobs'];
+      }
+    }
+
+
+   // drupal_set_message('Total: '. count($reviewed_ids). '. IDs: '. print_r($reviewed_ids). ' '.$user->id());
+
+
+    /** @var \Drupal\Core\Entity\EntityStorageInterface $storagePostedJobs */
+    $storagePostedJobs = $this->entity_type_manager->getStorage('posted_job');
+
+    /** @var \Drupal\Core\Entity\Query\QueryInterface $query */
+    $query = $storagePostedJobs->getQuery();
+    if (count($reviewed_ids) > 0) {
+      // If user never reviewed, then do not perform condition, because empty array will be passed: NOT IN()
+      $query->condition('id', $reviewed_ids, 'NOT IN');
+    }
+
+    $query->range(0,1);
+    $ids = $query->execute();
+
+
+   // if (!empty($ids)) {
+      $job = $storagePostedJobs->load(reset($ids));
+   // }
+
     return $job;
 
   }
