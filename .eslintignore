@@ -7,5 +7,4 @@ sites/**/libraries/**/*
 profiles/**/libraries/**/*
 **/js_test_files/**/*
 sites/default/files/js/**/*
-sites/default/files/js
-sites/default/files/css
+
