@@ -9,8 +9,8 @@ use Symfony\Component\Routing\Route;
 /**
  * Provides routes for Posted job entities.
  *
- * @see Drupal\Core\Entity\Routing\AdminHtmlRouteProvider
- * @see Drupal\Core\Entity\Routing\DefaultHtmlRouteProvider
+ * @see \Drupal\Core\Entity\Routing\AdminHtmlRouteProvider
+ * @see \Drupal\Core\Entity\Routing\DefaultHtmlRouteProvider
  */
 class PostedJobHtmlRouteProvider extends AdminHtmlRouteProvider {
   /**
@@ -71,6 +71,8 @@ class PostedJobHtmlRouteProvider extends AdminHtmlRouteProvider {
    *   The generated route, if available.
    */
   protected function getAddFormRoute(EntityTypeInterface $entity_type) {
+
+
     if ($entity_type->hasLinkTemplate('add-form')) {
       $entity_type_id = $entity_type->id();
       $parameters = [
@@ -108,6 +110,7 @@ class PostedJobHtmlRouteProvider extends AdminHtmlRouteProvider {
    *   The generated route, if available.
    */
   protected function getSettingsFormRoute(EntityTypeInterface $entity_type) {
+
     if (!$entity_type->getBundleEntityType()) {
       $route = new Route("/admin/structure/{$entity_type->id()}/settings");
       $route

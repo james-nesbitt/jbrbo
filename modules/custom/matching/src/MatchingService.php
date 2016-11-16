@@ -71,6 +71,7 @@ class MatchingService implements MatchingServiceInterface {
     /**
      * @var array $reviewed_ids
      *      Contains all jobs user reviewed
+     *      Processing to make array usable in 'NOT IN' condition
      */
 
     foreach ($dbValues as $key => $jobs) {
@@ -133,10 +134,20 @@ class MatchingService implements MatchingServiceInterface {
       $reviewedPost = $storage->create([
         'field_job'=> $job->id(),
         'field_user'=> $user->id(),
+        // also date field can be added
       ]);
     }
 
     return $reviewedPost;
+  }
+
+
+
+
+  public function getApplicants(PostedJobInterface $job, AccountInterface $user)
+  {
+
+
   }
 
 }

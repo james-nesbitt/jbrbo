@@ -37,6 +37,7 @@ class PostedJobListBuilder extends EntityListBuilder {
         )
       )
     );
+
     return $row + parent::buildRow($entity);
   }
 

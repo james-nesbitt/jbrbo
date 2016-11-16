@@ -3,6 +3,7 @@
 namespace Drupal\job_posts;
 
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityChangedInterface;
 use Drupal\user\EntityOwnerInterface;
 
@@ -71,5 +72,7 @@ interface PostedJobInterface extends ContentEntityInterface, EntityChangedInterf
    *   The called Posted job entity.
    */
   public function setPublished($published);
+
+
 
 }

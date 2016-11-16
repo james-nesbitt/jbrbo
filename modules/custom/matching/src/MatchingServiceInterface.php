@@ -28,4 +28,12 @@ interface MatchingServiceInterface {
    * @return EntityInterface
    */
   public function getReviewedPost(PostedJobInterface $job, AccountInterface $user);
+
+  /**
+   * @param \Drupal\job_posts\PostedJobInterface $job
+   * @param \Drupal\Core\Session\AccountInterface $user
+   * @return EntityInterface  ?????
+   */
+  public function getApplicants(PostedJobInterface $job, AccountInterface $user);
+
 }

@@ -6,5 +6,3 @@ libraries/**/*
 sites/**/libraries/**/*
 profiles/**/libraries/**/*
 **/js_test_files/**/*
-sites/default/files/js/**/*
-

@@ -24,9 +24,9 @@ use Drupal\Core\Url;
 function template_preprocess_posted_job(array &$variables) {
   // Fetch PostedJob Entity Object.
   $posted_job = $variables['elements']['#posted_job'];
-
   // Helpful $content variable for templates.
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
+
   }
 }

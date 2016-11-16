@@ -3,6 +3,7 @@ posted_job.settings_tab:
   route_name: posted_job.settings
   title: 'Settings'
   base_route: posted_job.settings
+
 entity.posted_job.canonical:
   route_name: entity.posted_job.canonical
   base_route: entity.posted_job.canonical

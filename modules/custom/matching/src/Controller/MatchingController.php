@@ -56,6 +56,24 @@ class MatchingController extends ControllerBase {
     ];
   }
 
+
+
+  /**
+   * ApplicantList.
+   *
+   * @return string
+   *   Return Hello string.
+   */
+  public function applicantList($posted_job) {
+    return [
+      '#type' => 'markup',
+      '#markup' => $this->t('Implement method: applicantList with 1 argument (<b>'. $posted_job. '</b>) - Posted job')
+    ];
+  }
+
+
+
+
   /**
    * Myjobs.
    *

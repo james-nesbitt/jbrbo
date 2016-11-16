@@ -19,7 +19,7 @@ use Drupal\user\UserInterface;
  *   id = "posted_job",
  *   label = @Translation("Posted job"),
  *   handlers = {
- *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
+ *     "view_builder" = "Drupal\job_posts\PostedJobViewBuilder",
  *     "list_builder" = "Drupal\job_posts\PostedJobListBuilder",
  *     "views_data" = "Drupal\job_posts\Entity\PostedJobViewsData",
  *
@@ -45,7 +45,7 @@ use Drupal\user\UserInterface;
  *     "status" = "status",
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/posted_job/{posted_job}",
+ *     "canonical" = "/posted_job/{posted_job}",
  *     "add-form" = "/admin/structure/posted_job/add",
  *     "edit-form" = "/admin/structure/posted_job/{posted_job}/edit",
  *     "delete-form" = "/admin/structure/posted_job/{posted_job}/delete",

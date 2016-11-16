@@ -31,3 +31,12 @@ matching.matching_controller_myJobs:
     _title: 'My Jobs'
   requirements:
     _permission: 'access content'
+
+
+matching.matching_controller_applicantList:
+  path: '/applicants/{posted_job}'
+  defaults:
+    _controller: '\Drupal\matching\Controller\MatchingController::applicantList'
+    _title: 'Applicants'
+  requirements:
+    _permission: 'access content'
