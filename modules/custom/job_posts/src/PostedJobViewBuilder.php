@@ -19,28 +19,12 @@ class PostedJobViewBuilder extends EntityListBuilder {
   /**
    * {@inheritdoc}
    */
-  public function buildHeader() {
-    $header['id'] = $this->t('Posted job ID');
-    $header['name'] = $this->t('Name');
-    return $header + parent::buildHeader();
-  }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\job_posts\Entity\PostedJob */
-    $row['id'] = $entity->id();
-    $row['name'] = $this->l(
-      $entity->label(),
-      new Url(
-        'entity.posted_job.edit_form', array(
-          'posted_job' => $entity->id(),
-        )
-      )
-    );
 
-    return $row + parent::buildRow($entity);
+  // Needed method. Called from core/lib/Drupal/Core/Field/FieldConfigBase.php on line 282
+  // If is not declared, then site crash on job_posts fields update
+  public function resetCache() {
+
   }
 
 
