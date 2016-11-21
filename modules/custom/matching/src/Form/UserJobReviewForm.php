@@ -131,7 +131,7 @@ class UserJobReviewForm extends FormBase {
        * $jobReview->set('field_state', $jobReview->get('field_state')->set(0, $trigger['#state']));
        */
 
-      if ($jobReview->save()) {
+       if ($jobReview->save()) {
         drupal_set_message('Saved job review');
       }
     }

@@ -22,6 +22,23 @@ class MatchingService implements MatchingServiceInterface {
    */
   protected $entity_type_manager;
 
+
+  public function pretty(array $arrayForOutput)
+  {
+    if (count($arrayForOutput) > 0) {
+    print "<pre><b>";
+    print_r($arrayForOutput);
+    print "</b></pre>";
+  }
+
+  else {
+    print "<pre><b>";
+    print_r("Nothing");
+    print "</b></pre>";
+  }
+  }
+
+
   /**
    * Constructor.
    *
@@ -74,9 +91,11 @@ class MatchingService implements MatchingServiceInterface {
      *      Processing to make array usable in 'NOT IN' condition
      */
 
+
+    $reviewed_ids = array();
     foreach ($dbValues as $key => $jobs) {
       foreach ($jobs as $values) {
-        $reviewed_ids[] = $values['jobs'];
+        $reviewed_ids[] = $values;
       }
     }
 
@@ -89,7 +108,12 @@ class MatchingService implements MatchingServiceInterface {
 
     /** @var \Drupal\Core\Entity\Query\QueryInterface $query */
     $query = $storagePostedJobs->getQuery();
+
+
+   // $this->pretty($reviewed_ids);
+
     if (count($reviewed_ids) > 0) {
+
       // If user never reviewed, then do not perform condition, because empty array will be passed: NOT IN()
       $query->condition('id', $reviewed_ids, 'NOT IN');
     }

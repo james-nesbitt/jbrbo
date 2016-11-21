@@ -36,4 +36,6 @@ interface MatchingServiceInterface {
    */
   public function getApplicants(PostedJobInterface $job, AccountInterface $user);
 
+  public function pretty(array $arrayForOutput);
+
 }

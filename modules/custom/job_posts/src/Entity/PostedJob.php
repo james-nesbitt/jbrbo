@@ -22,12 +22,15 @@ use Drupal\user\UserInterface;
  *     "view_builder" = "Drupal\job_posts\PostedJobViewBuilder",
  *     "list_builder" = "Drupal\job_posts\PostedJobListBuilder",
  *     "views_data" = "Drupal\job_posts\Entity\PostedJobViewsData",
+ *     "summary" = "Drupal\job_posts\Entity\PostedJobSummaryBuilder",
+ *
  *
  *     "form" = {
  *       "default" = "Drupal\job_posts\Form\PostedJobForm",
  *       "add" = "Drupal\job_posts\Form\PostedJobForm",
  *       "edit" = "Drupal\job_posts\Form\PostedJobForm",
  *       "delete" = "Drupal\job_posts\Form\PostedJobDeleteForm",
+
  *     },
  *     "access" = "Drupal\job_posts\PostedJobAccessControlHandler",
  *     "route_provider" = {
