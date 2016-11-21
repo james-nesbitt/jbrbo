@@ -5,7 +5,10 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityListBuilder;
 //use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Entity\ContentEntityBase;
+use Drupal\Core\TypedData\DataDefinitionInterface;
 use Drupal\taxonomy\Entity\Term;
+
+use Drupal\Core\Field\FieldItemListInterface;
 
 
 
@@ -33,6 +36,10 @@ class PostedJobViewBuilder extends EntityListBuilder {
    */
   public function view(EntityInterface $entity, $view_mode = 'summary') {
 
+
+
+    // dsm($entity->toArray());
+
   //$form = $build_list[0];
     $row_id = $entity->id();
 
@@ -42,7 +49,7 @@ class PostedJobViewBuilder extends EntityListBuilder {
       '#markup' => $entity->label(),
     ];
 
-    /** @var EntityInterface $fieldItemList */
+
     $fieldItemList = $entity->get('field_salary')->first();
     $row['field_salary'] = (!empty($fieldItemList)) ? $fieldItemList->getString() : "EMPTY";
 
@@ -54,17 +61,44 @@ class PostedJobViewBuilder extends EntityListBuilder {
     ];
 
 
-    /** @var EntityInterface $fieldItemList */
+    /** @var FieldItemListInterface $fieldItemList */
     $fieldItemList = $entity->get('field_licence');
-    $row['field_licence'] = (!empty($fieldItemList)) ? $fieldItemList->getString() : "EMPTY";
 
+
+
+    /** @var DataDefinitionInterface $fieldLicence */
+    $fieldLicence = (!empty($fieldItemList)) ? $fieldItemList->getString() : "EMPTY";
+
+    $termIds = $fieldItemList->getValue();
+
+    //dsm($termIds);
+
+    $terms = "";
+    $reviewed_ids = array();
+    foreach ($termIds as $key => $jobs) {
+      foreach ($jobs as $values) {
+        $terms .= Term::load($values)->getName() . ', ';
+      }
+    }
+
+    foreach ($termIds as $key => $jobs) {
+
+    }
+   // $terms = Term::load($reviewed_ids[0])->getName();
+
+   // dsm($reviewed_ids);
+
+
+
+   // dsm($terms);
 
     $form['field_licence'] = [
       '#type' => 'item',
       '#title' => t('Licence'),
-      '#markup' => $row['field_licence'],
+      '#markup' => $fieldLicence . ':<br>' . $terms,
     ];
 
+   // print_r($fieldItemList);
 
 
 /*
